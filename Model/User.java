@@ -1,4 +1,4 @@
-package warsztaty_2.SchoolOfProgramming;
+package warsztaty_2.SchoolOfProgramming.Model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,6 +23,10 @@ public class User {
         setPassword(password);
         this.userGroupId=userGroupId;
     }
+
+	public int getId() { return id; }
+
+	public void setId(int id) { this.id = id; }
 
 	public String getUsername() {
 		return username;
@@ -112,8 +116,10 @@ public class User {
 	        loadedUser.username = resultSet.getString("username");
 	        loadedUser.password = resultSet.getString("password");
 	        loadedUser.email = resultSet.getString("email");
+			loadedUser.userGroupId = resultSet.getInt("user_group_id");
 	        users.add(loadedUser);}
-	    User[] uArray = new User[users.size()]; uArray = users.toArray(uArray);
+	    User[] uArray = new User[users.size()];
+	    uArray = users.toArray(uArray);
 	    return uArray;}
 	
 	public void delete(Connection conn) throws SQLException {

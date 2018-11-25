@@ -1,16 +1,17 @@
-package warsztaty_2.SchoolOfProgramming;
+package warsztaty_2.SchoolOfProgramming.Model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Date;
 
-public class Solution {
+public class    Solution {
 
 	private int id;
-	private int created;
-	private int updated;
+	private String created;
+	private String updated;
 	private String description;
 	private int exerciseId;
 	private int usersId;
@@ -19,7 +20,7 @@ public class Solution {
 		
 		}
 	
-	public Solution(int id, int created, int updated, String description, int exerciseId, int usersId){
+	public Solution(int id, String created, String updated, String description, int exerciseId, int usersId){
 		this.id=id;
 		this.created=created;
 		this.updated=updated;
@@ -33,11 +34,11 @@ public class Solution {
 		return id;
 	}
 
-	public int getCreated() {
+	public String getCreated() {
 		return created;
 	}
 
-	public int getUpdated() {
+	public String getUpdated() {
 		return updated;
 	}
 
@@ -57,11 +58,11 @@ public class Solution {
 		this.id = id;
 	}
 
-	public void setCreated(int created) {
+	public void setCreated(String created) {
 		this.created = created;
 	}
 
-	public void setUpdated(int updated) {
+	public void setUpdated(String updated) {
 		this.updated = updated;
 	}
 
@@ -83,8 +84,8 @@ public class Solution {
 		    String generatedColumns[] = { "ID" };
 		    PreparedStatement preparedStatement;
 		    preparedStatement = conn.prepareStatement(sql, generatedColumns);
-		    preparedStatement.setInt(1, this.created);
-		    preparedStatement.setInt(2, this.updated);
+		    preparedStatement.setString(1, this.created);
+		    preparedStatement.setString(2, this.updated);
 		    preparedStatement.setString(3, this.description);
 		    preparedStatement.setInt(4, this.exerciseId);
 		    preparedStatement.setInt(5, this.usersId);
@@ -97,8 +98,8 @@ public class Solution {
 			    String sql = "UPDATE exercise SET created=?, updated=?, description=?, exercise_id=?, users_id=? where id = ?";
 			    PreparedStatement preparedStatement;
 			    preparedStatement = conn.prepareStatement(sql);
-			    preparedStatement.setInt(1, this.created);
-			    preparedStatement.setInt(2, this.updated);
+			    preparedStatement.setString(1, this.created);
+			    preparedStatement.setString(2, this.updated);
 			    preparedStatement.setString(3, this.description);
 			    preparedStatement.setInt(4, this.exerciseId);
 			    preparedStatement.setInt(5, this.usersId);
@@ -107,7 +108,7 @@ public class Solution {
 			}
 		}
 	
-	static public Solution loadSolutionById(Connection conn, int id) throws SQLException {
+	static public Solution loadSolutionsById(Connection conn, int id) throws SQLException {
 	    String sql = "SELECT * FROM solution where id=?";
 	    PreparedStatement preparedStatement;
 	    preparedStatement = conn.prepareStatement(sql);
@@ -116,8 +117,8 @@ public class Solution {
 	    if (resultSet.next()) {
 	        Solution loadedSolution = new Solution();
 	        loadedSolution.id = resultSet.getInt("id");
-	        loadedSolution.created = resultSet.getInt("created");
-	        loadedSolution.updated = resultSet.getInt("updated");
+	        loadedSolution.created = resultSet.getString("created");
+	        loadedSolution.updated = resultSet.getString("updated");
 	        loadedSolution.description = resultSet.getString("description");
 	        loadedSolution.exerciseId = resultSet.getInt("exercise_id");
 	        loadedSolution.usersId = resultSet.getInt("users_id");
@@ -132,8 +133,8 @@ public class Solution {
 	    while (resultSet.next()) {
 	        Solution loadedSolution = new Solution();
 	        loadedSolution.id = resultSet.getInt("id");
-	        loadedSolution.created = resultSet.getInt("created");
-	        loadedSolution.updated = resultSet.getInt("updated");
+	        loadedSolution.created = resultSet.getString("created");
+	        loadedSolution.updated = resultSet.getString("updated");
 	        loadedSolution.description = resultSet.getString("description");
 	        loadedSolution.exerciseId = resultSet.getInt("exercise_id");
 	        loadedSolution.usersId = resultSet.getInt("users_id");
@@ -161,8 +162,8 @@ public class Solution {
 		    while (resultSet.next()) {
 		        Solution loadedSolutionByUserId = new Solution();
 		        loadedSolutionByUserId.id = resultSet.getInt("id");
-		        loadedSolutionByUserId.created = resultSet.getInt("created");
-		        loadedSolutionByUserId.updated = resultSet.getInt("updated");
+		        loadedSolutionByUserId.created = resultSet.getString("created");
+		        loadedSolutionByUserId.updated = resultSet.getString("updated");
 		        loadedSolutionByUserId.description = resultSet.getString("description");
 		        loadedSolutionByUserId.exerciseId = resultSet.getInt("exercise_id");
 		        loadedSolutionByUserId.usersId = resultSet.getInt("users_id");
@@ -181,8 +182,8 @@ public class Solution {
 		    while (resultSet.next()) {
 		        Solution loadedSolutionByExerciseId = new Solution();
 		        loadedSolutionByExerciseId.id = resultSet.getInt("id");
-		        loadedSolutionByExerciseId.created = resultSet.getInt("created");
-		        loadedSolutionByExerciseId.updated = resultSet.getInt("updated");
+		        loadedSolutionByExerciseId.created = resultSet.getString("created");
+		        loadedSolutionByExerciseId.updated = resultSet.getString("updated");
 		        loadedSolutionByExerciseId.description = resultSet.getString("description");
 		        loadedSolutionByExerciseId.exerciseId = resultSet.getInt("exercise_id");
 		        loadedSolutionByExerciseId.usersId = resultSet.getInt("users_id");

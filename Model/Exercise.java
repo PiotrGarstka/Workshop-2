@@ -1,4 +1,4 @@
-package warsztaty_2.SchoolOfProgramming;
+package warsztaty_2.SchoolOfProgramming.Model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -69,6 +69,7 @@ public class Exercise {
 			    preparedStatement.executeUpdate();
 			}
 		}
+
 	
 	static public Exercise loadExerciseById(Connection conn, int id) throws SQLException {
 	    String sql = "SELECT * FROM exercise where id=?";
