@@ -73,7 +73,7 @@ public class StudentView {
 
                         System.out.println("Podaj id zadania: ");
                         while (!scan.hasNextInt()) {
-                            System.out.print("Nieprawidłowe dane. Podaj jeszcze raz:"); }
+                            System.out.print("Nieprawidłowe dane. Podaj jeszcze raz: "); }
                         solution.setExerciseId(scan.nextInt());
 
                         solution.setUpdated((new Timestamp(date.getTime()))+" ");
